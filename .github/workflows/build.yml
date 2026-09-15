@@ -23,6 +23,7 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
+<<<<<<< HEAD
           packages: platform-tools
 
       - name: Install Android SDK
@@ -41,6 +42,16 @@ jobs:
           ls -la "$ANDROID_HOME/build-tools"
 
       - name: Setup Gradle
+=======
+          packages: 'platform-tools'
+
+      - name: Install Android SDK 34
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-34" "build-tools;34.0.0" "platform-tools"
+
+      - name: Setup Gradle wrapper
+>>>>>>> 31d9de91a9ec164b6819463190b62d4e685b18c9
         run: |
           gradle wrapper --gradle-version 8.5
           chmod +x ./gradlew
